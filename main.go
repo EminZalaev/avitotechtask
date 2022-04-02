@@ -3,7 +3,7 @@ package main
 import (
 	"avitotechtask/pkg/config"
 	"avitotechtask/pkg/database"
-	"avitotechtask/pkg/service/handlers"
+	"avitotechtask/pkg/service"
 	_ "github.com/lib/pq"
 	"log"
 	"net/http"
@@ -11,7 +11,7 @@ import (
 
 func main() {
 
-	handlers.RouteHandlers()
+	service.RouteHandlers()
 
 	database.ConnectDataBase()
 

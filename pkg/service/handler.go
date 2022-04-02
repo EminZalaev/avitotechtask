@@ -1,10 +1,8 @@
-package handlers
+package service
 
 import (
 	"avitotechtask/pkg/database"
-	"avitotechtask/pkg/service"
 	"encoding/json"
-	"log"
 	"net/http"
 	"strconv"
 )
@@ -17,57 +15,59 @@ func RouteHandlers() {
 }
 
 func ProfitMoneyHandler(w http.ResponseWriter, r *http.Request) {
-	var JsonCome service.JsonCome
+	var JsonCome JsonCome
 
 	err := json.NewDecoder(r.Body).Decode(&JsonCome)
 	if err != nil {
-		log.Println("ERR :cant decode", err)
+		w.Write([]byte("ERROR : Invalid Json\n"))
+	} else {
+		if database.QueryProfitMoney(JsonCome.Id, JsonCome.Money) {
+			w.Write([]byte("Money added successfully!"))
+		}
 	}
 
-	database.QueryProfitMoney(JsonCome.Id, JsonCome.Money)
-
-	w.Write([]byte("Money added successfully!"))
 }
 
 func WriteOffMoneyHandler(w http.ResponseWriter, r *http.Request) {
-	var JsonCome1 service.JsonCome
+	var JsonCome1 JsonCome
 
 	err := json.NewDecoder(r.Body).Decode(&JsonCome1)
 	if err != nil {
-		log.Println("ERROR : cant decode", err)
-	}
-
-	if !database.QueryWriteOffMoney(JsonCome1.Id, JsonCome1.Money) {
-		w.Write([]byte("ERROR : Not enough money"))
+		w.Write([]byte("ERROR : Invalid Json\n"))
 	} else {
-		w.Write([]byte("Money written of successfully!"))
+		if database.QueryWriteOffMoney(JsonCome1.Id, JsonCome1.Money) {
+			w.Write([]byte("Money written of successfully!"))
+		} else {
+			w.Write([]byte("ERROR : Not enough money\n"))
+		}
 	}
 
 }
 
 func TransferHandler(w http.ResponseWriter, r *http.Request) {
-	var JsonTransfer service.JsonTransfer
+	var JsonTransfer JsonTransfer
 
 	err := json.NewDecoder(r.Body).Decode(&JsonTransfer)
 	if err != nil {
-		log.Println("ERROR :cant decode", err)
-	}
-
-	if !database.QueryTransfer(JsonTransfer.FirstId, JsonTransfer.SecondId, JsonTransfer.Money) {
-		w.Write([]byte("ERROR : Not enough money!"))
+		w.Write([]byte("ERROR : Invalid Json\n"))
 	} else {
-		w.Write([]byte("Money transferred!"))
+		if database.QueryTransfer(JsonTransfer.FirstId, JsonTransfer.SecondId, JsonTransfer.Money) {
+			w.Write([]byte("Money transferred!"))
+		} else {
+			w.Write([]byte("ERROR : Not enough money!\n"))
+		}
 	}
 
 }
 
 func CheckBalanceHandler(w http.ResponseWriter, r *http.Request) {
-	var JsonCome service.JsonCome
+	var JsonCome JsonCome
 
 	err := json.NewDecoder(r.Body).Decode(&JsonCome)
 	if err != nil {
-		log.Println("ERR :cant decode", err)
+		w.Write([]byte("ERROR : Invalid Json\n"))
+	} else {
+		w.Write([]byte(strconv.Itoa(database.GetCurrentBalance(JsonCome.Id))))
 	}
 
-	w.Write([]byte(strconv.Itoa(database.GetCurrentBalance(JsonCome.Id))))
 }

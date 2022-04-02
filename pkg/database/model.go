@@ -12,7 +12,7 @@ type Users struct {
 	Balance    int    `json:"Balance"`
 }
 
-func QueryProfitMoney(id int, money int) {
+func QueryProfitMoney(id int, money int) bool {
 	db := ConnectDataBase()
 
 	rows, err := db.Query("UPDATE users SET balance=balance+$2 where id=$1;", id, money)
@@ -21,6 +21,8 @@ func QueryProfitMoney(id int, money int) {
 	}
 
 	defer rows.Close()
+
+	return true
 }
 
 func QueryWriteOffMoney(id int, money int) bool {
