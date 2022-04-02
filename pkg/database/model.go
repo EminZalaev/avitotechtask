@@ -28,7 +28,7 @@ func QueryProfitMoney(id int, money int) bool {
 func QueryWriteOffMoney(id int, money int) bool {
 	db := ConnectDataBase()
 
-	if GetCurrentBalance(id) <= money {
+	if GetCurrentBalance(id) < money {
 		return false
 	}
 
