@@ -1,6 +1,5 @@
-# avitotechtask
 
-Запуск:
+#Запуск:
 
 1. Установить PostgreSQL
 
@@ -14,7 +13,7 @@
 
 
 
-HTTP Запросы:
+# HTTP Запросы:
 
 http://localhost:8080/BillingService/ProfitMoney : Начисление по id
 Пример JSON :
