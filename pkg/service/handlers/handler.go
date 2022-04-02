@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"avitotechtask/internal/database"
-	"avitotechtask/internal/service"
+	"avitotechtask/pkg/database"
+	"avitotechtask/pkg/service"
 	"encoding/json"
 	"log"
 	"net/http"

@@ -1,7 +1,7 @@
 package database
 
 import (
-	"avitotechtask/internal/config"
+	"avitotechtask/pkg/config"
 	"database/sql"
 	"fmt"
 	"log"

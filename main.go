@@ -1,8 +1,8 @@
 package main
 
 import (
-	"avitotechtask/internal/database"
-	"avitotechtask/internal/service/handlers"
+	"avitotechtask/pkg/database"
+	"avitotechtask/pkg/service/handlers"
 	_ "github.com/lib/pq"
 	"net/http"
 )
@@ -16,4 +16,3 @@ func main() {
 	http.ListenAndServe(":8080", nil)
 
 }
-
