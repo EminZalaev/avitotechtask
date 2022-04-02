@@ -59,6 +59,7 @@ http://localhost:8080/BillingService/Transfer : Перевод по id от од
 Пример JSON :
 
    {
+   
         "firstId" : 2,
         
         "SecondId" : 3,
