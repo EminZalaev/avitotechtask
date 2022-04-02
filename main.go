@@ -1,9 +1,11 @@
 package main
 
 import (
+	"avitotechtask/pkg/config"
 	"avitotechtask/pkg/database"
 	"avitotechtask/pkg/service/handlers"
 	_ "github.com/lib/pq"
+	"log"
 	"net/http"
 )
 
@@ -13,6 +15,6 @@ func main() {
 
 	database.ConnectDataBase()
 
-	http.ListenAndServe(":8080", nil)
+	log.Fatalln(http.ListenAndServe(config.GetConfig().Host+config.GetConfig().Port, nil))
 
 }

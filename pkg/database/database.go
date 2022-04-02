@@ -12,6 +12,7 @@ func ConnectDataBase() *sql.DB {
 		"password=%s dbname=%s sslmode=%s",
 		config.GetConfig().DbHost, config.GetConfig().DbPort, config.GetConfig().User,
 		config.GetConfig().Password, config.GetConfig().DbName, config.GetConfig().SSLmode)
+
 	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
 		log.Println("db dont open", err)

@@ -40,12 +40,16 @@ func QueryWriteOffMoney(id int, money int) bool {
 	return true
 }
 
-func QueryTransfer(id int, id2 int, money int) {
+func QueryTransfer(id int, id2 int, money int) bool {
 	ConnectDataBase()
 
 	if QueryWriteOffMoney(id, money) {
 		QueryProfitMoney(id2, money)
+
+		return true
 	}
+
+	return false
 
 }
 
@@ -53,6 +57,8 @@ func GetCurrentBalance(id int) int {
 	db := ConnectDataBase()
 
 	var uidCurrent Users
+
+	uidCurrent.Id = id
 
 	checkBalance, err := db.Query("SELECT balance FROM users where id=$1", uidCurrent.Id)
 	if err != nil {
