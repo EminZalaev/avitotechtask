@@ -48,6 +48,7 @@ http://localhost:8080/BillingService/WriteOffMoney : Списание по id
 
 Money written of successfully!
 
+
 Результат в случае когда недостаточно средств на балансе :
 
 ERROR : Not enough money
@@ -69,9 +70,12 @@ http://localhost:8080/BillingService/Transfer : Перевод по id от од
    }
     
 Результат :
+
 Money written of successfully!
 
+
 Результат в случае когда недостаточно средств у того, кто хочет перевести деньги : 
+
 ERROR : Not enough money
 
 --------------------------------------------------------------------------------------------
