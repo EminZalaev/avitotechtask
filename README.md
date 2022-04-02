@@ -18,9 +18,13 @@
 http://localhost:8080/BillingService/ProfitMoney : Начисление по id
 
 Пример JSON :
+
    {
+   
         "id" : 1,
+        
         "money" : 200
+        
    }
     
 Результат :
@@ -31,9 +35,13 @@ Money added successfully!
 http://localhost:8080/BillingService/WriteOffMoney : Списание по id
 
 Пример JSON :
+
    {
+   
         "id" : 2,
+        
         "money" : 100
+        
    }
     
 Результат в случае успеха :
@@ -49,10 +57,14 @@ ERROR : Not enough money
 http://localhost:8080/BillingService/Transfer : Перевод по id от одного человека другому
 
 Пример JSON :
+
    {
         "firstId" : 2,
+        
         "SecondId" : 3,
+        
         "money" : 100
+        
    }
     
 Результат :
@@ -66,14 +78,18 @@ ERROR : Not enough money
 http://localhost:8080/BillingService/CheckBalance : Проверка баланса
 
 Пример JSON :
+
    {
+   
         "id" : 2
+        
    }
     
 Результат :
 
 <Баланс пользователя>
 
+-------------------------------------------------------------------------------------------
 
 Для всех случаев при запросе невалидного JSON :
 
