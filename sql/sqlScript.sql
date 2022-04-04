@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS users1
 (
     id           serial,
     name         varchar not null,
-    "cardNumber" varchar not null,
+    cardNumber varchar not null,
     balance      int default 0
 );
 
