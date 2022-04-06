@@ -5,7 +5,7 @@
 
 2. git clone https://github.com/EminZalaev/avitotechtask
 
-3. Выполнить скрипты для создания таблицы в файле sql/create_tables.up.sql
+3. Выполнить скрипты для создания таблицы в файле sql/_.up.sql
 
 4. В файле /pkg/config/config.go ввести данные PostgreSQL (хост, порт и тд)
 
