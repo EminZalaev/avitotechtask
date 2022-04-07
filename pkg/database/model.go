@@ -13,9 +13,8 @@ type Users struct {
 }
 
 func QueryProfitMoney(id int, money int) bool {
-	db := ConnectDataBase()
 
-	rows, err := db.Query("UPDATE users SET balance=balance+$2 where id=$1;", id, money)
+	rows, err := db.Query("UPDATE users1 SET balance=balance+$2 where id=$1;", id, money)
 	if err != nil {
 		log.Println("Query Profit error : ", err)
 	}
@@ -32,7 +31,7 @@ func QueryWriteOffMoney(id int, money int) bool {
 		return false
 	}
 
-	rows, err := db.Query("UPDATE users SET balance=balance-$2 where id=$1;", id, money)
+	rows, err := db.Query("UPDATE users1 SET balance=balance-$2 where id=$1;", id, money)
 	if err != nil {
 		log.Println("Query Write-Off set balance error:", err)
 	}
@@ -62,7 +61,7 @@ func GetCurrentBalance(id int) int {
 
 	uidCurrent.Id = id
 
-	checkBalance, err := db.Query("SELECT balance FROM users where id=$1", uidCurrent.Id)
+	checkBalance, err := db.Query("SELECT balance FROM users1 where id=$1", uidCurrent.Id)
 	if err != nil {
 		log.Println("Query error:", err)
 	}

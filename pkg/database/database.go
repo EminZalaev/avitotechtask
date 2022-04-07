@@ -7,11 +7,18 @@ import (
 	"log"
 )
 
+type psql struct {
+	dbslq *sql.DB
+}
+
 func ConnectDataBase() *sql.DB {
-	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s "+
-		"password=%s dbname=%s sslmode=%s",
-		config.GetConfig().DbHost, config.GetConfig().DbPort, config.GetConfig().User,
-		config.GetConfig().Password, config.GetConfig().DbName, config.GetConfig().SSLmode)
+	var db *sql.DB
+	psqlInfo := fmt.Sprintf("postgres://%v:%v@%v:%v/%v?sslmode=disable",
+		config.GetConfig().User,
+		config.GetConfig().Password,
+		config.GetConfig().DbHost,
+		config.GetConfig().DbPort,
+		config.GetConfig().DbName)
 
 	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
@@ -22,6 +29,6 @@ func ConnectDataBase() *sql.DB {
 	if err != nil {
 		log.Print(err)
 	}
-
+	
 	return db
 }

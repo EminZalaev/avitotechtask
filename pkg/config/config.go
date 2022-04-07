@@ -13,7 +13,7 @@ func getDataBaseConfig() DataBase {
 		DbPort:   "5432",
 		User:     "postgres",
 		Password: "1234",
-		DbName:   "avito",
+		DbName:   "postgres",
 		SSLmode:  "disable",
 	}
 }
